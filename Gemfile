@@ -17,6 +17,7 @@ group :dependencies do
   gem "oa-openid", "0.3.2"
   gem "ruby-openid", "~>2.5"
   gem "open_id_authentication"
+  gem "coveralls", require: false
   gem "RubyInline"
   gem "paperclip", "~>4.2.2"
 
