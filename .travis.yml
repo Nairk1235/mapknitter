@@ -14,3 +14,6 @@ install:
 
 script:
   - docker-compose run web bash -l -c "rake test"
+
+after_success:
+  - CI=true TRAVIS=true coveralls --verbose
