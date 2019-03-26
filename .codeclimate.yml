@@ -1,10 +1,5 @@
 verions: "2"
 plugins:
-  brakeman:
-    enabled: true
-    checks:
-      cross_site_scripting:
-        enabled: false
   bundler-audit:
     enabled: true
   eslint:
