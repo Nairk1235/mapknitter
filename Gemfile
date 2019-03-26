@@ -4,13 +4,13 @@ ruby "2.4.4"
 gem "rails", "~>3.2"
 gem 'rake',  '~> 12.3.2'
 
-gem "will_paginate", "3.1.6"
+gem "will_paginate", "3.1.7"
 gem "will_paginate-bootstrap"
 gem "friendly_id"
-
+gem 'rails4_upgrade', github: 'alindeman/rails4_upgrade'
 # dependencies
 group :dependencies do
-  gem 'mysql2', '< 0.4'
+  #gem 'mysql2', '< 0.4'
   gem "geokit-rails", "1.1.4"
   gem "image_science", "1.2.6"
   gem "recaptcha", :require => "recaptcha/rails"
@@ -18,6 +18,7 @@ group :dependencies do
   gem "ruby-openid", "~>2.5"
   gem "open_id_authentication"
   gem "RubyInline"
+  gem "coveralls", require: false
   gem "paperclip", "~>4.2.2"
 
   # if you use amazon s3 for warpable image storage
