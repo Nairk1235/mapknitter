@@ -7,10 +7,10 @@ gem 'rake',  '~> 12.3.2'
 gem "will_paginate", "3.1.7"
 gem "will_paginate-bootstrap"
 gem "friendly_id"
-
+gem 'rails4_upgrade', github: 'alindeman/rails4_upgrade'
 # dependencies
 group :dependencies do
-  gem 'mysql2', '< 0.4'
+  #gem 'mysql2', '< 0.4'
   gem "geokit-rails", "1.1.4"
   gem "image_science", "1.2.6"
   gem "recaptcha", :require => "recaptcha/rails"
