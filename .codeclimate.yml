@@ -1,0 +1,19 @@
+verions: "2"
+plugins:
+  bundler-audit:
+    enabled: true
+  eslint:
+    enabled: true
+  fixme:
+    enabled: true
+  reek:
+    enabled: true
+  rubocop:
+    enabled: true
+exclude_patterns:
+- "config/"
+- "db/"
+- "test/"
+- "vendor/"
+- "public/"
+- "log/"

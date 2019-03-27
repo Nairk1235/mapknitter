@@ -1,16 +1,31 @@
 sudo: required
 services:
-  - docker
+- docker
+cache:
+  directories: /home/travis/.rvm
+  bundler: true
 
 install:
-  - cp config/database.yml.example config/database.yml
-  - cp config/config.yml.example config/config.yml
-  - cp db/schema.rb.example db/schema.rb
-  - docker-compose up -d --build
-  - docker-compose exec web bash -l -c "sleep 10"
-  - docker-compose exec web bash -l -c "bundle install"
-  - docker-compose exec web bash -l -c "rake db:setup || rake db:migrate"
-
+- cp config/database.yml.example config/database.yml
+- cp config/config.yml.example config/config.yml
+- cp db/schema.rb.example db/schema.rb
+- docker-compose up -d --build
+- docker-compose exec web bash -l -c "sleep 10"
+- docker-compose exec web bash -l -c "bundle install"
+- docker-compose exec web bash -l -c "rake db:setup || rake db:migrate"
+before_script:
+- curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64
+  > ./cc-test-reporter
+- chmod +x ./cc-test-reporter
+- "./cc-test-reporter before-build"
 script:
-  - sed -ri "s/REPO_TOKEN/$REPO_TOKEN/" .coveralls.yml
-  - docker-compose run web bash -l -c "CI=true TRAVIS=true rake test:all"
+- sed -ri "s/REPO_TOKEN/$REPO_TOKEN/" .coveralls.yml
+- docker-compose run web bash -l -c "CI=true TRAVIS=true rake test:all"
+after_script:
+- "./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT"
+
+addons:
+  code_climate:
+    repo_token:
+      secure: "o+dFCF0FY23IdnGzPrSZukPH63fH3kx/pda4jnavBvrhmy5m7bAUi61bH0p9CrOy2Sx2K97T0u3F8Ah/a9slEEWXhnlrZNOVbgfbXofmUNBXojz1L6xIDcIgT/fFt5QgSjDvLHj59SO20+igEE9E/G87KYzI2CT21RjZTFw6aCyCHxUtXEmQcKj0T6GA6VFVo6K6d3FEadvfF3s/pGOb0Cx9wTcbuCDgTKiCJHu2p1c6v2kk+0ehpsq6n7MgTpF23J/R2h6D5H/nNHRREQ/tXc4VTMOs4O6TBh8FwQoNNTV2PyeYRBCVCL4/0Omc2rAMKFaF8JRVFvxfDCVy6kj1f2KEcJ1vpOAVS3Ma7I2asHQ6mm6AolHFHcSeKByJ7LZH87aFnmFNjWWqSpNao5RKTd8gXPV22S54JoUzIOegEr4wNKVUttn2v6hBWZF8CDDyWPVhVtSNxR2jDMY4aoHwcJpGfUfZJ451oVAAgy5Cdc82Ii21jboQ+koo/Fzbjh9dCMuJN/HExE08+cTgV9n1nYaydnUzPzGbYMTaCFZFrVX+f6vHQnW8n5KmGzTrIdXKw2RtGEGGtIWKSE2pV6g+9RugjEhdYAEOlOnrxnYd9/2D71NCjiRy2cLmJSC88Zu/PD4tn5igKrDEok/T1bLrgwEB31MjAKk82TBzakt2wvs="
+
