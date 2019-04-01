@@ -6,11 +6,4 @@ class ImagesControllerTest < ActionController::TestCase
   def setup
     @map = maps(:saugus)
   end 
-
-  test "should create image"
-  test "should delete image"
-  test "should display image"
-  test "should update image"
-  test "should import image"
-
 end
