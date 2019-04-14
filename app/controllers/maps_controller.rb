@@ -1,8 +1,8 @@
 require 'open3'
 
 class MapsController < ApplicationController
-  protect_from_forgery :except => [:export]
-  before_filter :require_login, :only => [:edit, :update, :destroy]
+  protect_from_forgery :except => [:export] 
+  before_filter :require_login, :only => [:edit, :update, :destroy] 
 
   layout 'knitter2'
 
@@ -17,7 +17,7 @@ class MapsController < ApplicationController
     # ensure even maps with no images are shown on front page and don't get lost; some spam risk
     @new_maps = Map.where(archived: false, password: '')
 	       .order('updated_at DESC')
-    render :layout => 'application'
+    render :layout => 'application' 
   end
 
   def map
