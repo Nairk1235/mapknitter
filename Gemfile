@@ -41,7 +41,7 @@ end
 
 group :test do
   gem 'simplecov', require: false
-  gem 'codecov', require: false
+  gem 'simplecov-json', require: false
   gem 'test-unit'    
 end
 
