@@ -40,8 +40,8 @@ group :dependencies do
 end
 
 group :test do
+  gem 'simplecov', require: false
   gem 'test-unit'    
-  gem "simplecov", require: false
 end
 
 group :development do
