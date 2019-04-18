@@ -15,7 +15,3 @@ script:
   - docker-compose exec web bash -l -c "CI=true TRAVIS=true rake test:all"
   - bash <(curl -s https://codecov.io/bash)
 
-branches:
-  only:
-    - main
-    - unstable
