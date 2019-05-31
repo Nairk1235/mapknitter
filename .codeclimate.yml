@@ -18,7 +18,7 @@ plugins:
     enabled: true
   rubocop: 
     enabled: true
-    channel: rubocop-0-70
+    channel: rubocop-0-69
 
 exclude_patterns:
 - config/
