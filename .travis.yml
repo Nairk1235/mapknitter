@@ -36,9 +36,4 @@ jobs:
         - RAILS_ENV=production
       script: bundle exec rake assets:precompile
 
-branches:
-  only:
-    - main
-    - unstable
-    - development
 
