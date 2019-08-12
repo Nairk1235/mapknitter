@@ -13,6 +13,10 @@ gem 'popper_js', '~> 1.11', '>= 1.11.1'
 gem 'protected_attributes'
 gem 'paper_trail'
 
+#dangerbot
+gem 'danger'
+gem 'danger-junit'
+
 # dependencies
 group :dependencies do
   gem 'mysql2', '< 0.6'
